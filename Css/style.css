@@ -32,12 +32,15 @@ label {
 /* CLASSES: */
 .sectionForms {
     min-height: 100vh;
-    display: flexbox;
-    justify-items: center;
-    align-content: center;
     background-color: #e5e6e7;
+    display: flex;
+    justify-content: space-around;
 }
-
+.divisao_forms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .Form-loginSenha {
     background-color: #fff;
     border-radius: 10px;
@@ -54,7 +57,6 @@ label {
 .lista--form, p{
     color: #4A5565;
 }
-
 
 h3 {
     color: #101828;

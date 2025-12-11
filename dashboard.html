@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Web Livros - Dashboard</title>
     <link rel="shortcut icon" href="Img/Logo_livro.png" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,56 +18,107 @@
 <body>
     <nav class="menu">
         <div class="menu--logo">
-            <img class="logo_img" src="Img/Logo_livro.png" alt="imagem da logo em azul, se assemelha a um livro aberto">
+            <img class="logo_img" src="img/Logo_livro.png" alt="Logo Web Livros">
             <ul class="logo_lista">
-                <li><h5>Web livros</h5></li>
+                <li><h5>WebLivros</h5></li>
                 <li><p>0 livros cadastrados</p></li>
             </ul>
-            
-            
         </div>
         <div class="menu--botoes">
             <ul class="menu--listaBtn">
-                <li><button class="bi bi-plus-lg">Entrar</button></li>
-                <li><button class="bi bi-box-arrow-right"> Sair</button></li>
+                <li>
+                    <button class="btn-novo-livro">
+                        <i class="bi bi-plus-lg me-2"></i> Novo Livro
+                    </button>
+                </li>
+                <li>
+                    <button class="btn-sair">
+                        Sair <i class="bi bi-box-arrow-right"></i>
+                    </button>
+                </li>
             </ul>
         </div>
-
     </nav>
     <main>
-
         <section>
-            <div class="livrosTeste">
-                <div class="teste01">
-                    <p>total de livros</p>
-                    <p>0</p>
-                    <img src="Img/lock_img.png" alt="">
-
+            <div class="cards-container">
+                <div class="cards-column">
+                    <div class="card-stat card-total">
+                        <p>Total de Livros</p>
+                        <div class="card-content">
+                            <p id="stat-total">0</p>
+                            <div class="card-icon"><i class="bi bi-book"></i></div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-stat card-lendo">
+                        <p>Lendo Agora</p>
+                        <div class="card-content">
+                            <p id="stat-lendo">0</p>
+                            <div class="card-icon"><i class="bi bi-bookmark-fill"></i></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="teste02">
-                    <p>total de livros</p>
-                    <p>0</p>
-                    <img src="Img/lock_img.png" alt="">
 
+                <div class="cards-column">
+                    <div class="card-stat card-lidos">
+                        <p>Livros Lidos</p>
+                        <div class="card-content">
+                            <p id="stat-lidos">0</p>
+                            <div class="card-icon"><i class="bi bi-check2-square"></i></div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-stat card-emprestimos">
+                        <p>Empréstimos Ativos</p>
+                        <div class="card-content">
+                            <p id="stat-emprestimos">0</p>
+                            <div class="card-icon"><i class="bi bi-clock-fill"></i></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="teste01">
-                    <p>total de livros</p>
-                    <p>0</p>
-                    <img src="Img/lock_img.png" alt="">
+            </div>
 
-                </div>
-                <div class="teste02">
-                    <p>total de livros</p>
-                    <p>0</p>
-                    <img src="Img/lock_img.png" alt="">
+            <div class="progresso-leitura">
+                <h4>
+                    Progresso de Leitura
+                    <i class="bi bi-graph-up"></i>
+                </h4>
+                <div class="progress-list">
+                    
+                    <div class="progress-item">
+                        <p class="progress-status">Lido</p>
+                        <p class="progress-value"><span>0</span> de <span>0</span></p>
+                    </div>
+
+                    <div class="progress-item">
+                        <p class="progress-status">Lendo</p>
+                        <p class="progress-value"><span>0</span> de <span>0</span></p>
+                    </div>
+
+                    <div class="progress-item">
+                        <p class="progress-status">Quero Ler</p>
+                        <p class="progress-value"><span>0</span> de <span>0</span></p>
+                    </div>
 
                 </div>
             </div>
-            <div></div>
+
+            <div class="livros-recentes">
+                <div class="livros-recentes-header">
+                    <h4>Livros Recentes</h4>
+                    <a href="#">Ver todos</a>
+                </div>
+                <div class="livros-recentes-content">
+                    <i class="bi bi-book icon-placeholder"></i>
+                    <p>Nenhum livro cadastrado ainda</p>
+                    <a href="#" class="add-book-link">Adicionar primeiro livro</a>
+                </div>
+            </div>
         </section>
     </main>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="Js/dashboard.js"></script>
 </html>

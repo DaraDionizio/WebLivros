@@ -10,7 +10,7 @@ body {
     min-height: 100vh
 }
 
-p, h3, br, img, button, label, input{
+p, h3, br, img, button, label, input, h4{
     user-select: none;
     /* POR SE TRATAR DE UMA TELA DE LOGIN ACHEI INTERESSANTE POR ESTE BLOQUEIO DE SELEÇÃO*/
 }
@@ -61,6 +61,14 @@ label {
 h3 {
     color: #101828;
     padding: auto;
+}
+.demonstração{
+    margin-top: 1.5rem;
+    padding: 15px;
+    background-color: #eaf1f7;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: grey;
 }
 
 .entrar-btn {

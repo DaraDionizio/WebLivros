@@ -21,7 +21,7 @@
     <main>
         <section class="sectionForms" draggable="false">
             <div class="divisao_forms">
-                <form class="Form-loginSenha" id="FormLoginSenha" draggable="false">
+                <form class="Form-loginSenha" id="FormLoginSenha" draggable="false" action="/dashboard.html">
                     <ul class="lista--form" draggable="false">
                         <li><img src="Img/Logo_livro.png" alt="imagem da logo em azul, se assemelha a um livro aberto"
                                 draggable="false"></li><!-- PARA NAO ARRASTAR, INCRIVEL :) -->
@@ -43,14 +43,17 @@
                     <div class="div_senha" draggable="false">
                         <div class="senha-input" draggable="false">
                             <label for="senha_user">Senha</label>
-                            <input type="text" id="senha_user" placeholder=" &#xF47B; Digite sua senha" required>
+                            <input type="password" id="senha_user" placeholder=" &#xF47B; Digite sua senha" required>
                         </div><br>
                     </div>
 
                     <button type="submit" class="entrar-btn" id="entrarBtn">
                         Entrar
                     </button>
-
+                    <div class="demonstração">
+                        <h4>Credenciais de demonstração:</h4>
+                        <p>Usuário: admin | Senha: admin</p>
+                    </div>
                 </form>
 
             </div>
@@ -58,5 +61,6 @@
     </main>
 </body>
 <script src="Js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

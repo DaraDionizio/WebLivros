@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arimo;
+    background-color: #F7FAFF;
+    min-height: 100vh
+}
+
+p, h3, br, img, button, label, input, h4{
+    user-select: none;
+    /* POR SE TRATAR DE UMA TELA DE LOGIN ACHEI INTERESSANTE POR ESTE BLOQUEIO DE SELEÇÃO*/
+}
+input {
+    height: 40px;
+}
+input::placeholder {
+    font-family: "bootstrap-icons";
+    font-size: 15px;
+    line-height: 40px;
+}
+label {
+    text-align: left;
+    display: block;
+    margin: 6px 6px;
+    color: #364153;
+}
+
+/* CLASSES: */
+.sectionForms {
+    min-height: 100vh;
+    background-color: #e5e6e7;
+    display: flex;
+    justify-content: space-around;
+}
+.divisao_forms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Form-loginSenha {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 20px 40px #0000001a;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+.lista--form{
+    list-style: none;
+    padding: 1rem;
+}
+.lista--form, p{
+    color: #4A5565;
+}
+
+h3 {
+    color: #101828;
+    padding: auto;
+}
+.demonstração{
+    margin-top: 1.5rem;
+    padding: 15px;
+    background-color: #eaf1f7;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: grey;
+}
+
+.entrar-btn {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 6px;
+    padding: 15px;
+    border-style: hidden;
+    width: 100%;
+    display: block;
+    background: #155DFC ;
+}
+
+.entrar-btn:hover {
+    box-shadow: 0 5px 15px #667eea33;
+    transform: translateY(-0.5px);
+}
+
+.login-input {
+    flex: 1;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #3572EF;
+    background: #fff;
+    box-shadow: 0 5px 15px #667eea33;
+    transform: translateY(-1px);
+}

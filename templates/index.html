@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebLivros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" href="{% static 'Logo_livro.png' %}" type="image/x-icon">
+
+</head>
+
+<body>
+    <main>
+        <section class="sectionForms" draggable="false">
+            <div class="divisao_forms">
+                <form class="Form-loginSenha" id="FormLoginSenha" action="{% url 'livros:dashboard' %}" method="GET">
+                    <ul class="lista--form" draggable="false">
+                        <li><img src="{% static 'Logo_livro.png' %}" alt="imagem da logo em azul, se assemelha a um livro aberto"
+                                draggable="false"></li>
+                        <li><br>
+                            <h3>Sistema de gestão de Biblioteca Pessoal</h3><br>
+                        </li>
+                        <li>
+                            <p>Entre para gerenciar seus livros</p>
+                        </li>
+                    </ul>
+
+                    <div class="div_login" draggable="false">
+                        <div class="login-input">
+                            <label for="login_user">Usuário</label>
+                            <input type="text" id="login_user" name="login_user" placeholder=" &#xF4E1; Digite seu usuário" required>
+                        </div>
+                    </div><br>
+
+                    <div class="div_senha" draggable="false">
+                        <div class="senha-input" draggable="false">
+                            <label for="senha_user">Senha</label>
+                            <input type="password" id="senha_user" name="senha_user" placeholder=" &#xF47B; Digite sua senha" required>
+                        </div><br>
+                    </div>
+
+                    <button type="submit" class="entrar-btn" id="entrarBtn">
+                        Entrar
+                    </button>
+                    <div class="demonstração">
+                        <h4>Credenciais de demonstração:</h4>
+                        <p>Usuário: admin | Senha: admin</p>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+</body>
+<script src="{% static 'script.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

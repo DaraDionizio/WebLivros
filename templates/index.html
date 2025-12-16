@@ -13,8 +13,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="shortcut icon" href="{% static 'Logo_livro.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'Css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'Img/Logo_livro.png' %}" type="image/x-icon">
 
 </head>
 
@@ -24,7 +24,7 @@
             <div class="divisao_forms">
                 <form class="Form-loginSenha" id="FormLoginSenha" action="{% url 'livros:dashboard' %}" method="GET">
                     <ul class="lista--form" draggable="false">
-                        <li><img src="{% static 'Logo_livro.png' %}" alt="imagem da logo em azul, se assemelha a um livro aberto"
+                        <li><img src="{% static 'Img/Logo_livro.png' %}" alt="imagem da logo em azul, se assemelha a um livro aberto"
                                 draggable="false"></li>
                         <li><br>
                             <h3>Sistema de gestão de Biblioteca Pessoal</h3><br>
@@ -61,7 +61,7 @@
         </section>
     </main>
 </body>
-<script src="{% static 'script.js' %}"></script>
+<script src="{% static 'Js/script.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

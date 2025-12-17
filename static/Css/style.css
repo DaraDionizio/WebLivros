@@ -62,7 +62,7 @@ h3 {
     color: #101828;
     padding: auto;
 }
-.demonstração{
+.demonstracao{
     margin-top: 1.5rem;
     padding: 15px;
     background-color: #eaf1f7;
@@ -110,4 +110,19 @@ select:focus {
     background: #fff;
     box-shadow: 0 5px 15px #667eea33;
     transform: translateY(-1px);
+}
+.btn-cadastrar {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    /* background-color: #e6eaff; */
+    color: #1f4ed8;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn-cadastrar:hover {
+    background-color: #e6eaff;
 }

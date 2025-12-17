@@ -1,13 +1,13 @@
 from django.contrib.auth.decorators import login_required
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 from .models import Livro
-
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 import json
 
@@ -120,3 +120,27 @@ def deletar_livro(request, livro_id):
 def sair(request):
     logout(request)
     return redirect('livros:index')
+
+
+def cadastrar_usuario(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Usuário já existe")
+            return redirect("livros:cadastrar")
+
+        User.objects.create_user(
+            username=username,
+            password=password
+        )
+
+        messages.success(request, "Usuário criado com sucesso!")
+        return redirect("livros:index")
+
+    return render(request, "cadastrar.html")
+
+def equipe(request):
+    return render(request, 'equipe.html')
+

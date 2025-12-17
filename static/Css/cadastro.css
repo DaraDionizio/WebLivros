@@ -1,0 +1,148 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BASE */
+body {
+    font-family: Arimo, sans-serif;
+    background-color: white;
+    min-height: 100vh;
+}
+
+p, h3, img, button, label, input {
+    user-select: none;
+}
+
+input {
+    height: 42px;
+}
+
+/* PLACEHOLDER COM ÍCONE */
+input::placeholder {
+    font-family: "bootstrap-icons";
+    font-size: 15px;
+}
+
+/* LAYOUT */
+.sectionForms {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.divisao_forms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* CARD */
+.Form-cadastro {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 42px;
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* HEADER */
+.lista--form {
+    list-style: none;
+    padding-bottom: 1rem;
+}
+
+.lista--form img {
+    width: 35px;
+    margin-bottom: 10px;
+}
+
+.lista--form h3 {
+    color: #101828;
+}
+
+.lista--form p {
+    color: #4A5565;
+    font-size: 0.9rem;
+}
+.header-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+/* INPUTS */
+label {
+    font-size: small;
+    display: block;
+    text-align: left;
+    margin: 6px;
+    color: #364153;
+}
+
+input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3572EF;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+    transform: translateY(-1px);
+}
+
+/* BOTÃO */
+.btn-cadastrar {
+    margin-top: 1.2rem;
+    width: 100%;
+    padding: 14px;
+    background: #155DFC;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cadastrar:hover {
+    box-shadow: 0 8px 20px rgba(21, 93, 252, 0.35);
+    transform: translateY(-1px);
+}
+
+/* RODAPÉ */
+.cadastro-footer {
+    margin-top: 1.5rem;
+    padding: 14px;
+    background-color: #eaf1f7;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.cadastro-footer a {
+    display: inline-block;
+    margin-top: 8px;
+    color: #1f4ed8;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cadastro-footer a:hover {
+    text-decoration: underline;
+}

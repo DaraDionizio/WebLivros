@@ -294,6 +294,29 @@ section {
     justify-content: center;
 }
 
+.livros-recentes-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+
+/* remove quebra de linha */
+.livro-item {
+    min-width: 220px;
+    flex-shrink: 0;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+/* ajuste da capa para modo horizontal */
+.livro-capa {
+    width: 48px;
+    height: 68px;
+}
+
 
 
 

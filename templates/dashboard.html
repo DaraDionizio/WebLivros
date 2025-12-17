@@ -21,8 +21,12 @@
         <div class="menu--logo">
             <img class="logo_img" src="{% static 'Img/Logo_livro.png' %}" alt="Logo Web Livros">
             <ul class="logo_lista">
-                <li><h5>WebLivros</h5></li>
-                <li><p id="total-livros">0 livros cadastrados</p></li>
+                <li>
+                    <h5>WebLivros</h5>
+                </li>
+                <li>
+                    <p id="total-livros">0 livros cadastrados</p>
+                </li>
             </ul>
         </div>
         <div class="menu--botoes">
@@ -33,9 +37,10 @@
                     </button>
                 </li>
                 <li>
-                    <button class="btn-sair" onclick="window.location.href='{% url 'livros:index' %}'">
+                    <button class="btn-sair" onclick="window.location.href='{% url 'livros:logout' %}'">
                         Sair <i class="bi bi-box-arrow-right"></i>
                     </button>
+
                 </li>
             </ul>
         </div>
@@ -51,7 +56,7 @@
                             <div class="card-icon"><i class="bi bi-book"></i></div>
                         </div>
                     </div>
-                    
+
                     <div class="card-stat card-lendo">
                         <p>Lendo Agora</p>
                         <div class="card-content">
@@ -69,7 +74,7 @@
                             <div class="card-icon"><i class="bi bi-check2-square"></i></div>
                         </div>
                     </div>
-                    
+
                     <div class="card-stat card-emprestimos">
                         <p>Empréstimos Ativos</p>
                         <div class="card-content">
@@ -86,7 +91,7 @@
                     <i class="bi bi-graph-up"></i>
                 </h4>
                 <div class="progress-list">
-                    
+
                     <div class="progress-item">
                         <p class="progress-status">Lido</p>
                         <p class="progress-value"><span>0</span> de <span id="progress-total-1">0</span></p>
@@ -113,7 +118,7 @@
                 <div class="livros-recentes-content" id="livros-lista">
                     <i class="bi bi-book icon-placeholder"></i>
                     <p>Nenhum livro cadastrado ainda</p>
-                    <button class="btn-novo-livro add-book-link">Adicionar primeiro livro</button>
+                    <br>
                 </div>
             </div>
         </section>
@@ -135,7 +140,7 @@
                                 <input type="text" class="form-control" id="titulo" required>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="ano_publicacao" class="form-label">Ano *</label>
+                                <label for="ano_publicacao" class="form-label">Ano </label>
                                 <input type="number" class="form-control" id="ano_publicacao" required>
                             </div>
                         </div>
@@ -152,17 +157,17 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="categoria" class="form-label">Categoria/Gênero *</label>
-                                <input type="text" class="form-control" id="categoria" placeholder="Ex: Ficção, Romance, Suspense..." required>
+                                <input type="text" class="form-control" id="categoria"
+                                    placeholder="Ex: Ficção, Romance, Suspense..." required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="num_paginas" class="form-label">Número de Páginas *</label>
+                                <label for="num_paginas" class="form-label">Número de Páginas </label>
                                 <input type="number" class="form-control" id="num_paginas" required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="status" class="form-label">Status *</label>
                             <select class="form-control" id="status" required>
-                                <option value="ativo">Ativo</option>
                                 <option value="lendo">Lendo Agora</option>
                                 <option value="lido">Lido</option>
                                 <option value="emprestado">Emprestado</option>
@@ -197,4 +202,5 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'Js/dashboard.js' %}"></script>
+
 </html>

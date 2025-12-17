@@ -7,7 +7,8 @@ urlpatterns = [
     # Páginas
     path('', views.index, name='index'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    
+    path('logout/', views.sair, name='logout'),
+
     # API Endpoints
     path('api/livros/', views.listar_livros, name='listar_livros'),
     path('api/livros/<int:livro_id>/', views.obter_livro, name='obter_livro'),

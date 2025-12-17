@@ -1,21 +1,41 @@
+from django.contrib.auth.decorators import login_required
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 from .models import Livro
+
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_protect
+
 import json
 
 # Create your views here.
 
 def index(request):
-    """Renderiza a página inicial"""
+    if request.method == 'POST':
+        username = request.POST.get('login_user')
+        password = request.POST.get('senha_user')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user:
+            login(request, user)
+            return redirect('livros:dashboard')
+        else:
+            return render(request, 'index.html', {
+                'erro': 'Usuário ou senha inválidos'
+            })
+
     return render(request, 'index.html')
 
+@login_required(login_url='livros:index')
 def dashboard(request):
-    """Renderiza o dashboard"""
     return render(request, 'dashboard.html')
 
 # API Endpoints para gerenciar livros
+@login_required
 def listar_livros(request):
     """Retorna todos os livros em formato JSON"""
     livros = Livro.objects.all().values(
@@ -41,7 +61,7 @@ def obter_livro(request, livro_id):
     }
     return JsonResponse(data)
 
-@csrf_exempt
+@login_required
 @require_http_methods(["POST"])
 def criar_livro(request):
     """Cria um novo livro"""
@@ -62,7 +82,7 @@ def criar_livro(request):
     except Exception as e:
         return JsonResponse({'erro': str(e)}, status=400)
 
-@csrf_exempt
+@login_required
 @require_http_methods(["PUT", "PATCH"])
 def atualizar_livro(request, livro_id):
     """Atualiza um livro existente"""
@@ -85,7 +105,7 @@ def atualizar_livro(request, livro_id):
     except Exception as e:
         return JsonResponse({'erro': str(e)}, status=400)
 
-@csrf_exempt
+@login_required
 @require_http_methods(["DELETE"])
 def deletar_livro(request, livro_id):
     """Deleta um livro"""
@@ -95,3 +115,8 @@ def deletar_livro(request, livro_id):
         return JsonResponse({'mensagem': 'Livro deletado com sucesso!'})
     except Exception as e:
         return JsonResponse({'erro': str(e)}, status=400)
+
+
+def sair(request):
+    logout(request)
+    return redirect('livros:index')

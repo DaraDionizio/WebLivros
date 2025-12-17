@@ -22,10 +22,12 @@
     <main>
         <section class="sectionForms" draggable="false">
             <div class="divisao_forms">
-                <form class="Form-loginSenha" id="FormLoginSenha" action="{% url 'livros:dashboard' %}" method="GET">
+                <form class="Form-loginSenha" id="FormLoginSenha" method="POST">
+                    {% csrf_token %}
+
                     <ul class="lista--form" draggable="false">
-                        <li><img src="{% static 'Img/Logo_livro.png' %}" alt="imagem da logo em azul, se assemelha a um livro aberto"
-                                draggable="false"></li>
+                        <li><img src="{% static 'Img/Logo_livro.png' %}"
+                                alt="imagem da logo em azul, se assemelha a um livro aberto" draggable="false"></li>
                         <li><br>
                             <h3>Sistema de gestão de Biblioteca Pessoal</h3><br>
                         </li>
@@ -37,14 +39,16 @@
                     <div class="div_login" draggable="false">
                         <div class="login-input">
                             <label for="login_user">Usuário</label>
-                            <input type="text" id="login_user" name="login_user" placeholder=" &#xF4E1; Digite seu usuário" required>
+                            <input type="text" id="login_user" name="login_user"
+                                placeholder=" &#xF4E1; Digite seu usuário" required>
                         </div>
                     </div><br>
 
                     <div class="div_senha" draggable="false">
                         <div class="senha-input" draggable="false">
                             <label for="senha_user">Senha</label>
-                            <input type="password" id="senha_user" name="senha_user" placeholder=" &#xF47B; Digite sua senha" required>
+                            <input type="password" id="senha_user" name="senha_user"
+                                placeholder=" &#xF47B; Digite sua senha" required>
                         </div><br>
                     </div>
 

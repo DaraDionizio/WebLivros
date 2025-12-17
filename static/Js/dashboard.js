@@ -34,12 +34,12 @@ function inicializarElementosDOM() {
         statEmprestimos: document.getElementById('stat-emprestimos'),
         totalLivros: document.getElementById('total-livros'),
         livrosLista: document.getElementById('livros-lista'),
-        btnNovoLivro: document.querySelectorAll('.btn-novo-livro'),
+        btnNovoLivro: document.querySelector('.btn-novo-livro'),
         btnSalvarLivro: document.getElementById('btnSalvarLivro'),
         formLivro: document.getElementById('formLivro'),
         progressItems: document.querySelectorAll('.progress-value')
     };
-    
+
     console.log('Elementos do DOM carregados:', elementosDOM);
 }
 
@@ -108,14 +108,14 @@ function renderizarLivrosRecentes(livros) {
         elementosDOM.livrosLista.innerHTML = `
             <i class="bi bi-book icon-placeholder"></i>
             <p>Nenhum livro cadastrado ainda</p>
-            <button class="btn-novo-livro add-book-link">Adicionar primeiro livro</button>
+            <button class="btn-novo-livro add-book-link">
+                Adicionar primeiro livro
+            </button>
         `;
+
+        const btn = elementosDOM.livrosLista.querySelector('.btn-novo-livro');
+        btn.addEventListener('click', abrirModalNovoLivro);
         
-        // Reattach event listener
-        const novoBtn = elementosDOM.livrosLista.querySelector('.btn-novo-livro');
-        if (novoBtn) {
-            novoBtn.addEventListener('click', abrirModalNovoLivro);
-        }
     } else {
         const livrosRecentes = livros.slice(0, 5);
         elementosDOM.livrosLista.innerHTML = livrosRecentes.map(livro => `
@@ -158,33 +158,32 @@ function salvarLivro() {
         },
         body: JSON.stringify(dados)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Livro criado:', data);
-        const modal = bootstrap.Modal.getInstance(document.getElementById('modalLivro'));
-        modal.hide();
-        elementosDOM.formLivro.reset();
-        carregarLivros();
-    })
-    .catch(erro => {
-        console.error('Erro ao salvar livro:', erro);
-        alert('Erro ao salvar livro. Verifique os dados e tente novamente.');
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log('Livro criado:', data);
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalLivro'));
+            modal.hide();
+            elementosDOM.formLivro.reset();
+            carregarLivros();
+        })
+        .catch(erro => {
+            console.error('Erro ao salvar livro:', erro);
+            alert('Erro ao salvar livro. Verifique os dados e tente novamente.');
+        });
 }
 
 // Inicializar quando o DOM estiver pronto
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         inicializarElementosDOM();
         renderizarDashboard();
         carregarLivros();
 
         // Event listeners
         if (elementosDOM.btnNovoLivro) {
-            elementosDOM.btnNovoLivro.forEach(btn => {
-                btn.addEventListener('click', abrirModalNovoLivro);
-            });
+            elementosDOM.btnNovoLivro.addEventListener('click', abrirModalNovoLivro);
         }
+
 
         if (elementosDOM.btnSalvarLivro) {
             elementosDOM.btnSalvarLivro.addEventListener('click', salvarLivro);
@@ -197,9 +196,7 @@ if (document.readyState === 'loading') {
 
     // Event listeners
     if (elementosDOM.btnNovoLivro) {
-        elementosDOM.btnNovoLivro.forEach(btn => {
-            btn.addEventListener('click', abrirModalNovoLivro);
-        });
+        elementosDOM.btnNovoLivro.addEventListener('click', abrirModalNovoLivro);
     }
 
     if (elementosDOM.btnSalvarLivro) {

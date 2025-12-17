@@ -67,6 +67,8 @@ def criar_livro(request):
     try:
         data = json.loads(request.body)
 
+        status = data.get('status', 'ativo')
+
         livro = Livro.objects.create(
             titulo=data.get('titulo'),
             autor=data.get('autor'),
@@ -77,7 +79,10 @@ def criar_livro(request):
             descricao=data.get('descricao', ''),
             capa_url=data.get('capa_url', ''),
             status=data.get('status', 'ativo'),
-            usuario=request.user  # 🔐 AQUI ESTÁ A CHAVE
+            usuario=request.user,
+
+            emprestado_para=data.get('emprestado_para') if status == 'emprestado' else None,
+            data_emprestimo=data.get('data_emprestimo') if status == 'emprestado' else None,
         )
 
         return JsonResponse(

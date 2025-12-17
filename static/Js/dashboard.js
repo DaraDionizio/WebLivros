@@ -171,6 +171,10 @@ function salvarLivro() {
         capa_url: document.getElementById('capa_url').value,
         status: document.getElementById('status').value,
     };
+    if (dados.status === 'emprestado') {
+        dados.emprestado_para = document.getElementById('emprestado_para').value;
+        dados.data_emprestimo = document.getElementById('data_emprestimo').value;
+    }
 
     fetch(window.API_URLS.criar, {
         method: 'POST',
@@ -224,4 +228,20 @@ if (document.readyState === 'loading') {
     if (elementosDOM.btnSalvarLivro) {
         elementosDOM.btnSalvarLivro.addEventListener('click', salvarLivro);
     }
+    
 }
+
+const statusSelect = document.getElementById('status');
+const camposEmprestimo = document.getElementById('campos-emprestimo');
+
+statusSelect.addEventListener('change', () => {
+    if (statusSelect.value === 'emprestado') {
+        camposEmprestimo.style.display = 'block';
+    } else {
+        camposEmprestimo.style.display = 'none';
+
+        // limpa os campos se mudar de ideia
+        document.getElementById('emprestado_para').value = '';
+        document.getElementById('data_emprestimo').value = '';
+    }
+});

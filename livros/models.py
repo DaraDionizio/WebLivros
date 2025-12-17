@@ -17,7 +17,7 @@ class Livro(models.Model):
         related_name='livros',
         verbose_name='Usuário'
     )
-    
+
     titulo = models.CharField(max_length=200, verbose_name='Título')
     autor = models.CharField(max_length=200, verbose_name='Autor')
     editora = models.CharField(max_length=200, verbose_name='Editora')
@@ -30,12 +30,21 @@ class Livro(models.Model):
     data_cadastro = models.DateTimeField(auto_now_add=True, verbose_name='Data de Cadastro')
     data_atualizacao = models.DateTimeField(auto_now=True, verbose_name='Data de Atualização')
 
+
+    emprestado_para = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
+
+    data_emprestimo = models.DateField(
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return f"{self.titulo} - {self.autor}"
     class Meta:
         verbose_name = 'Livro'
         verbose_name_plural = 'Livros'
         ordering = ['-data_cadastro']
-
-        
-
-    def __str__(self):
-        return f"{self.titulo} - {self.autor}"

@@ -28,5 +28,7 @@ class Livro(models.Model):
         verbose_name_plural = 'Livros'
         ordering = ['-data_cadastro']
 
+        
+
     def __str__(self):
         return f"{self.titulo} - {self.autor}"

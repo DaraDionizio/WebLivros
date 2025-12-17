@@ -119,11 +119,33 @@ function renderizarLivrosRecentes(livros) {
     } else {
         const livrosRecentes = livros.slice(0, 5);
         elementosDOM.livrosLista.innerHTML = livrosRecentes.map(livro => `
-            <div class="livro-item">
-                <h6>${livro.titulo}</h6>
-                <p>${livro.autor}</p>
+    <div class="livro-item d-flex align-items-center justify-content-between">
+        
+        <div class="d-flex align-items-center gap-2">
+            <div class="livro-capa">
+                ${
+                    livro.capa_url
+                        ? `<img src="${livro.capa_url}" alt="Capa do livro">`
+                        : `<i class="bi bi-book capa-placeholder"></i>`
+                }
             </div>
-        `).join('');
+
+            <div class="livro-info">
+                <h6 class="mb-0">${livro.titulo}</h6>
+                <small class="text-muted">${livro.autor}</small>
+            </div>
+        </div>
+
+        <button 
+            class="btn btn-sm btn-danger"
+            onclick="deletarLivro(${livro.id})"
+            title="Excluir livro">
+            <i class="bi bi-trash"></i>
+        </button>
+
+    </div>
+`).join('');
+
     }
 }
 

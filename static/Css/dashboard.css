@@ -263,6 +263,39 @@ section {
     margin: 0;
     color: var(--secondary-text-color);
 }
+.livro-capa {
+    width: 40px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #f4f4f4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* imagem */
+.livro-capa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* placeholder */
+.capa-placeholder {
+    width: 100%;
+    height: 100%;
+    font-size: 1.1rem;
+    color: #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 
 /* .add-book-link {
     color: var(--primary-blue);

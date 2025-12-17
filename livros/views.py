@@ -37,12 +37,12 @@ def dashboard(request):
 # API Endpoints para gerenciar livros
 @login_required
 def listar_livros(request):
-    """Retorna todos os livros em formato JSON"""
-    livros = Livro.objects.all().values(
+    livros = Livro.objects.filter(usuario=request.user).values(
         'id', 'titulo', 'autor', 'editora', 'ano_publicacao', 
         'categoria', 'num_paginas', 'descricao', 'capa_url', 'status'
     )
     return JsonResponse(list(livros), safe=False)
+
 
 def obter_livro(request, livro_id):
     """Retorna um livro específico em formato JSON"""
@@ -64,9 +64,9 @@ def obter_livro(request, livro_id):
 @login_required
 @require_http_methods(["POST"])
 def criar_livro(request):
-    """Cria um novo livro"""
     try:
         data = json.loads(request.body)
+
         livro = Livro.objects.create(
             titulo=data.get('titulo'),
             autor=data.get('autor'),
@@ -77,19 +77,30 @@ def criar_livro(request):
             descricao=data.get('descricao', ''),
             capa_url=data.get('capa_url', ''),
             status=data.get('status', 'ativo'),
+            usuario=request.user  # 🔐 AQUI ESTÁ A CHAVE
         )
-        return JsonResponse({'id': livro.id, 'mensagem': 'Livro criado com sucesso!'}, status=201)
+
+        return JsonResponse(
+            {'id': livro.id, 'mensagem': 'Livro criado com sucesso!'},
+            status=201
+        )
+
     except Exception as e:
         return JsonResponse({'erro': str(e)}, status=400)
+
 
 @login_required
 @require_http_methods(["PUT", "PATCH"])
 def atualizar_livro(request, livro_id):
-    """Atualiza um livro existente"""
     try:
-        livro = get_object_or_404(Livro, id=livro_id)
+        livro = get_object_or_404(
+            Livro,
+            id=livro_id,
+            usuario=request.user
+        )
+
         data = json.loads(request.body)
-        
+
         livro.titulo = data.get('titulo', livro.titulo)
         livro.autor = data.get('autor', livro.autor)
         livro.editora = data.get('editora', livro.editora)
@@ -100,17 +111,23 @@ def atualizar_livro(request, livro_id):
         livro.capa_url = data.get('capa_url', livro.capa_url)
         livro.status = data.get('status', livro.status)
         livro.save()
-        
+
         return JsonResponse({'mensagem': 'Livro atualizado com sucesso!'})
     except Exception as e:
         return JsonResponse({'erro': str(e)}, status=400)
+
 
 @login_required
 @require_http_methods(["DELETE"])
 def deletar_livro(request, livro_id):
     """Deleta um livro"""
     try:
-        livro = get_object_or_404(Livro, id=livro_id)
+        livro = get_object_or_404(
+    Livro,
+    id=livro_id,
+    usuario=request.user
+)
+
         livro.delete()
         return JsonResponse({'mensagem': 'Livro deletado com sucesso!'})
     except Exception as e:

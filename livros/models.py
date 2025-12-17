@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,6 +11,12 @@ class Livro(models.Model):
         ('emprestado', 'Emprestado'),
         ('quero_ler', 'Quero Ler'),
     ]
+    usuario = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='livros',
+        verbose_name='Usuário'
+    )
     
     titulo = models.CharField(max_length=200, verbose_name='Título')
     autor = models.CharField(max_length=200, verbose_name='Autor')

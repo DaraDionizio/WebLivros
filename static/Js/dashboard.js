@@ -119,7 +119,9 @@ function renderizarLivrosRecentes(livros) {
     } else {
         const livrosRecentes = livros.slice(0, 5);
         elementosDOM.livrosLista.innerHTML = livrosRecentes.map(livro => `
-    <div class="livro-item d-flex align-items-center justify-content-between">
+        <div class="livro-item d-flex align-items-center justify-content-between ${livro.status === 'emprestado' ? 'livro-emprestado' : ''}">
+
+
         
         <div class="d-flex align-items-center gap-2">
             <div class="livro-capa">

@@ -301,7 +301,6 @@ section {
 }
 
 
-/* remove quebra de linha */
 .livro-item {
     min-width: 220px;
     flex-shrink: 0;
@@ -311,10 +310,13 @@ section {
     background-color: #fff;
 }
 
-/* ajuste da capa para modo horizontal */
 .livro-capa {
     width: 48px;
     height: 68px;
+}
+.livro-emprestado {
+    border-left: 6px solid #ffc107;   /* amarelo forte */
+    background-color: #fff8e1;        /* amarelo claro */
 }
 
 

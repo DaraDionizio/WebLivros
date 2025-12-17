@@ -44,9 +44,14 @@ def listar_livros(request):
     return JsonResponse(list(livros), safe=False)
 
 
+@login_required
 def obter_livro(request, livro_id):
-    """Retorna um livro específico em formato JSON"""
-    livro = get_object_or_404(Livro, id=livro_id)
+    livro = get_object_or_404(
+        Livro,
+        id=livro_id,
+        usuario=request.user
+    )
+
     data = {
         'id': livro.id,
         'titulo': livro.titulo,
@@ -58,8 +63,12 @@ def obter_livro(request, livro_id):
         'descricao': livro.descricao,
         'capa_url': livro.capa_url,
         'status': livro.status,
+        'emprestado_para': livro.emprestado_para,
+        'data_emprestimo': livro.data_emprestimo,
     }
+
     return JsonResponse(data)
+
 
 @login_required
 @require_http_methods(["POST"])
@@ -95,8 +104,9 @@ def criar_livro(request):
 
 
 @login_required
-@require_http_methods(["PUT", "PATCH"])
+@require_http_methods(["POST", "PUT"])
 def atualizar_livro(request, livro_id):
+    print(">>> ATUALIZAR LIVRO CHAMADO <<<", livro_id)
     try:
         livro = get_object_or_404(
             Livro,
@@ -115,11 +125,22 @@ def atualizar_livro(request, livro_id):
         livro.descricao = data.get('descricao', livro.descricao)
         livro.capa_url = data.get('capa_url', livro.capa_url)
         livro.status = data.get('status', livro.status)
+
+        # empréstimo
+        if livro.status == 'emprestado':
+            livro.emprestado_para = data.get('emprestado_para')
+            livro.data_emprestimo = data.get('data_emprestimo')
+        else:
+            livro.emprestado_para = None
+            livro.data_emprestimo = None
+
         livro.save()
 
         return JsonResponse({'mensagem': 'Livro atualizado com sucesso!'})
+
     except Exception as e:
         return JsonResponse({'erro': str(e)}, status=400)
+
 
 
 @login_required
